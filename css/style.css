@@ -259,3 +259,5 @@ span.btn { opacity: .85; }
   .shelf { grid-template-columns: repeat(auto-fill, 140px); column-gap: 18px; row-gap: 1.8rem; }
   .shelf .card img { width: 140px; height: 187px; }
 }
+/* every title takes two lines so the years line up */
+.shelf .card h3 { min-height: calc(2 * 1.15em); }
