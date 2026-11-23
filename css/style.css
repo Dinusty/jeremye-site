@@ -230,3 +230,19 @@ span.btn { opacity: .85; }
 .area .lead { max-width: 46rem; margin-bottom: 1.6rem; }
 .area .credit { font-size: 13px; color: var(--muted); margin: -0.6rem 0 1.6rem; max-width: 46rem; }
 .area .masonry { columns: 2 18rem; }
+
+/* ---------- Game shelf: two rows, scrolls sideways ---------- */
+.track {
+  grid-template-rows: auto auto;
+  grid-auto-flow: column;
+  grid-auto-columns: 168px;
+  column-gap: 44px; row-gap: 2.2rem;
+}
+.card img { width: 168px; height: 224px; box-shadow: 0 10px 24px rgba(0,0,0,.45); transition: transform .25s ease; }
+.card a:hover img, .card a:focus-visible img { transform: translateY(-6px); }
+.track.dragging .card img { transform: none; }
+@media (max-width: 800px) {
+  .track { grid-auto-columns: 132px; column-gap: 20px; row-gap: 1.6rem; }
+  .card img { width: 132px; height: 176px; }
+}
+.arrow { top: 50%; transform: translateY(-50%); }
