@@ -246,3 +246,16 @@ span.btn { opacity: .85; }
   .card img { width: 132px; height: 176px; }
 }
 .arrow { top: 50%; transform: translateY(-50%); }
+
+/* ---------- Game shelf: centered grid, no scrolling ---------- */
+.shelf {
+  list-style: none; margin: 0 auto; padding: 0 var(--side);
+  max-width: 1240px;
+  display: grid; grid-template-columns: repeat(auto-fill, 168px);
+  justify-content: center; column-gap: 40px; row-gap: 2.4rem;
+}
+.shelf .card img { width: 168px; height: 224px; }
+@media (max-width: 800px) {
+  .shelf { grid-template-columns: repeat(auto-fill, 140px); column-gap: 18px; row-gap: 1.8rem; }
+  .shelf .card img { width: 140px; height: 187px; }
+}
