@@ -203,7 +203,7 @@ span.btn { opacity: .85; }
 .carousel { padding: 0; }
 @media (max-width: 800px) { .track { padding-left: 6%; padding-right: 6%; scroll-padding-inline: 6%; } }
 .two-col.full { grid-template-columns: 1fr; }
-.two-col.full .masonry { columns: 3 18rem; }
+.two-col.full .masonry { columns: 2 18rem; }
 
 /* ---------- Transformations (crossfading stages of one space) ---------- */
 .progs { padding: 0 clamp(1.25rem, 8vw, 7rem) 3rem; max-width: 1440px; margin: 0 auto; }
