@@ -288,3 +288,5 @@ span.btn { opacity: .85; }
 @media (prefers-reduced-motion: reduce) {
   .lightbox::backdrop, .lightbox img, .lightbox .lb-close { transition: none; }
 }
+/* section text spans the full width of the section */
+.area .lead, .area .credit { max-width: none; }
