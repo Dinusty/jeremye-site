@@ -267,3 +267,24 @@ span.btn { opacity: .85; }
 /* Coming Soon placeholder */
 .soon-box { width: 168px; height: 224px; background: #080b14; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
 @media (max-width: 800px) { .soon-box { width: 140px; height: 187px; } }
+
+/* ---------- Smooth page transitions (cross-document view transitions) ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: .45s; animation-timing-function: ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+/* ---------- Lightbox open/close animation ---------- */
+.lightbox::backdrop { background: rgba(0,0,0,0); transition: background .3s ease; }
+.lightbox.show::backdrop { background: rgba(0,0,0,.9); }
+.lightbox img, .lightbox .lb-close { opacity: 0; transition: opacity .3s ease, transform .3s ease; }
+.lightbox img { transform: scale(.96); }
+.lightbox.show img, .lightbox.show .lb-close { opacity: 1; }
+.lightbox.show img { transform: none; }
+.lightbox img.swap { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .lightbox::backdrop, .lightbox img, .lightbox .lb-close { transition: none; }
+}
