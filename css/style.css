@@ -202,3 +202,5 @@ span.btn { opacity: .85; }
 .track { padding-left: 9%; padding-right: 9%; scroll-padding-inline: 9%; }
 .carousel { padding: 0; }
 @media (max-width: 800px) { .track { padding-left: 6%; padding-right: 6%; scroll-padding-inline: 6%; } }
+.two-col.full { grid-template-columns: 1fr; }
+.two-col.full .masonry { columns: 3 18rem; }
