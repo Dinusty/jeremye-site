@@ -183,3 +183,22 @@ span.btn { opacity: .85; }
   color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; padding: .3rem;
 }
 .lb-close:hover { opacity: .7; }
+
+/* carousel: drag to scroll + faded edges */
+.track {
+  cursor: grab; user-select: none; -webkit-user-select: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+.track.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.track img { -webkit-user-drag: none; }
+@media (max-width: 800px) {
+  .track {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+}
+/* start/end cards sit inside the solid area, only scrolling cards fade */
+.track { padding-left: 9%; padding-right: 9%; scroll-padding-inline: 9%; }
+.carousel { padding: 0; }
+@media (max-width: 800px) { .track { padding-left: 6%; padding-right: 6%; scroll-padding-inline: 6%; } }
