@@ -261,7 +261,6 @@ span.btn { opacity: .85; }
 }
 /* every title takes two lines so the years line up */
 .shelf .card h3 { min-height: calc(2 * 1.15em); }
-/* flex so a short last row is centered */
-.shelf { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.4rem 40px; max-width: calc(5 * 168px + 4 * 40px + 2 * var(--side)); }
-.shelf .card { width: 168px; }
-@media (max-width: 800px) { .shelf { gap: 1.8rem 18px; } .shelf .card { width: 140px; } }
+/* home banner at half height */
+.banner.home { min-height: 238px; padding: 0; }
+@media (max-width: 800px) { .banner.home { min-height: 200px; } }
