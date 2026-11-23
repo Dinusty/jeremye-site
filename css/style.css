@@ -262,5 +262,5 @@ span.btn { opacity: .85; }
 /* every title takes two lines so the years line up */
 .shelf .card h3 { min-height: calc(2 * 1.15em); }
 /* home banner at half height */
-.banner.home { min-height: 238px; padding: 0; }
-@media (max-width: 800px) { .banner.home { min-height: 200px; } }
+.banner.home { min-height: 320px; padding: 0; }
+@media (max-width: 800px) { .banner.home { min-height: 240px; } }
