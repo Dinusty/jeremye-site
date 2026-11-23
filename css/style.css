@@ -1,8 +1,8 @@
 /* jeremye.dev — matches the original Squarespace layout */
 
 :root {
-  --navy: #171d30;   /* main background */
-  --dark: #0a0a0c;   /* project page content */
+  --navy: #0f1320;   /* one background color for the whole site */
+  --dark: var(--navy);
   --black: #000;     /* footer, buttons */
   --text: #ececec;
   --muted: #b9bccb;
@@ -64,7 +64,7 @@ p { margin: 0 0 1em; }
 .banner.home::after { background: rgba(0,0,0,.15); }
 
 /* ---------- Home: projects carousel ---------- */
-.projects { padding: 2.2rem 0 3rem; background: linear-gradient(#0d1120, var(--navy)); }
+.projects { padding: 2.2rem 0 3rem; background: var(--navy); }
 .projects h2 { text-align: center; font-size: 32px; text-transform: uppercase; margin-bottom: 1.6rem; }
 .carousel { position: relative; padding: 0 var(--side); }
 .track {
