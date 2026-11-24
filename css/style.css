@@ -294,3 +294,15 @@ span.btn { opacity: .85; }
 .banner.home > img.slide { opacity: 0; transition: opacity 1.6s ease; object-position: center 40%; }
 .banner.home > img.slide.on { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .banner.home > img.slide { transition: none; } }
+/* responsibilities with no gallery beside them: two columns of groups, full width */
+.duties-only .duties { display: grid; grid-template-columns: 1fr 1fr; column-gap: 3.5rem; }
+@media (max-width: 800px) { .duties-only .duties { grid-template-columns: 1fr; } }
+.duties-only .duties h2 { grid-column: 1 / -1; margin-bottom: .5rem; }
+.duties-only .duties ul { max-width: none; }
+.duties-only .duties > h3:nth-of-type(1) { grid-column: 1; grid-row: 2; }
+.duties-only .duties > ul:nth-of-type(1) { grid-column: 1; grid-row: 3; }
+.duties-only .duties > h3:nth-of-type(2) { grid-column: 2; grid-row: 2; }
+.duties-only .duties > ul:nth-of-type(2) { grid-column: 2; grid-row: 3; }
+@media (max-width: 800px) {
+  .duties-only .duties > * { grid-column: 1 !important; grid-row: auto !important; }
+}
