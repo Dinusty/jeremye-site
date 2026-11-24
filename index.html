@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=202611240059">
+<link rel="stylesheet" href="css/style.css?v=202611240101">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -29,19 +29,32 @@
 </header>
 <main id="main">
 <section class="banner home">
-  <img class="slide on" src="images/pirates-fortune/joel-westman-dlc2-starwarsoutlaws-portfolio-nebula-joel-westman-04.jpg" alt=""><img class="slide" src="images/outlaws/james-rinere-gameinformercover-final-nologo.jpg" alt="" loading="lazy"><img class="slide" src="images/wony/jeremy-estrellado-tctd2-portfolio-haven-0092.jpg" alt="" loading="lazy"><img class="slide" src="images/div2/jeremy-estrellado-4k002.jpg" alt="" loading="lazy"><img class="slide" src="images/survival/jeremy-estrellado-survival-005.jpg" alt="" loading="lazy"><img class="slide" src="images/underground/dragons-nest-006.jpg" alt="" loading="lazy"><img class="slide" src="images/div1/jeremy-estrellado-security-001.jpg" alt="" loading="lazy"><img class="slide" src="images/home/ShadowofMordor.jpg" alt="" loading="lazy"><img class="slide" src="images/forza/forza5-prague-017.jpg" alt="" loading="lazy"><img class="slide" src="images/skrillex/jeremy-estrellado-ultra-3.jpg" alt="" loading="lazy"><img class="slide" src="images/home/Gotham.jpg" alt="" loading="lazy"><img class="slide" src="images/witn/jeremy-estrellado-010-fornost-02.jpg" alt="" loading="lazy"><img class="slide" src="images/home/Saw.jpg" alt="" loading="lazy"><img class="slide" src="images/home/Pirate.jpg" alt="" loading="lazy">
+  <img class="slide on" data-key="swo-a-pirates-fortune/index.html" src="images/pirates-fortune/joel-westman-dlc2-starwarsoutlaws-portfolio-nebula-joel-westman-04.jpg" alt=""><img class="slide" data-key="starwars-outlaws/index.html" src="images/outlaws/james-rinere-gameinformercover-final-nologo.jpg" alt="" loading="lazy"><img class="slide" data-key="the-division-2-warlords-of-new-york/index.html" src="images/wony/jeremy-estrellado-tctd2-portfolio-haven-0092.jpg" alt="" loading="lazy"><img class="slide" data-key="the-division-2/index.html" src="images/div2/jeremy-estrellado-4k002.jpg" alt="" loading="lazy"><img class="slide" data-key="the-division-survival/index.html" src="images/survival/jeremy-estrellado-survival-005.jpg" alt="" loading="lazy"><img class="slide" data-key="the-division-underground/index.html" src="images/underground/dragons-nest-006.jpg" alt="" loading="lazy"><img class="slide" data-key="the-division/index.html" src="images/div1/jeremy-estrellado-security-001.jpg" alt="" loading="lazy"><img class="slide" data-key="shadow-of-mordor/index.html" src="images/home/ShadowofMordor.jpg" alt="" loading="lazy"><img class="slide" data-key="forza-motorsport-5/index.html" src="images/forza/forza5-prague-017.jpg" alt="" loading="lazy"><img class="slide" data-key="skrillex-live-at-ultra/index.html" src="images/skrillex/jeremy-estrellado-ultra-3.jpg" alt="" loading="lazy"><img class="slide" data-key="gotham-city-impostors/index.html" src="images/home/Gotham.jpg" alt="" loading="lazy"><img class="slide" data-key="war-in-the-north/index.html" src="images/witn/jeremy-estrellado-010-fornost-02.jpg" alt="" loading="lazy"><img class="slide" data-key="saw/index.html" src="images/home/Saw.jpg" alt="" loading="lazy"><img class="slide" data-key="pirates-of-the-burning-sea/index.html" src="images/home/Pirate.jpg" alt="" loading="lazy">
   <div class="inner"><h1>Jeremy Estrellado</h1></div>
 </section>
 <script>
-  (function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const s = [...document.querySelectorAll('.banner.home .slide')];
-    if (s.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let i = 0;
-    setInterval(() => {
-      if (document.hidden) return;
-      s[i].classList.remove('on'); i = (i + 1) % s.length; s[i].classList.add('on');
-    }, 5000);
-  })();
+    if (!s.length) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null, hovering = false;
+    const show = (n) => { s[i].classList.remove('on'); i = n; s[i].classList.add('on'); };
+    const start = () => {
+      if (reduce || s.length < 2) return;
+      clearInterval(timer);
+      timer = setInterval(() => { if (!document.hidden && !hovering) show((i + 1) % s.length); }, 5000);
+    };
+    // hovering a game shows its banner; leaving resumes the rotation from there
+    document.querySelectorAll('.shelf .card').forEach((card) => {
+      const a = card.querySelector('a[href]');
+      if (!a) return;
+      const n = s.findIndex((el) => el.dataset.key === a.getAttribute('href'));
+      if (n < 0) return;
+      card.addEventListener('mouseenter', () => { hovering = true; if (n !== i) show(n); });
+      card.addEventListener('mouseleave', () => { hovering = false; start(); });
+    });
+    start();
+  });
 </script>
 <section class="projects">
   <h2>Projects</h2>
@@ -79,6 +92,6 @@
         <a href="https://bsky.app/profile/dinusty.bsky.social" aria-label="Bluesky"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0Zm-1.8 5.3a4 4 0 0 1-5.6-5.6l2.5-2.5a1 1 0 0 1 1.4 1.4l-2.5 2.5a2 2 0 0 0 2.8 2.8l2.5-2.5a1 1 0 0 1 1.4 1.4l-2.5 2.5Zm9-6.9a1 1 0 0 1-1.4-1.4l2.5-2.5a2 2 0 0 0-2.8-2.8l-2.5 2.5a1 1 0 1 1-1.4-1.4l2.5-2.5a4 4 0 0 1 5.6 5.6l-2.5 2.5Z"/></svg></a>
       </div>
 </footer>
-<script src="js/lightbox.js?v=202611240059" defer></script>
+<script src="js/lightbox.js?v=202611240101" defer></script>
 </body>
 </html>
