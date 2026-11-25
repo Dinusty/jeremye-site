@@ -306,3 +306,12 @@ span.btn { opacity: .85; }
 @media (max-width: 800px) {
   .duties-only .duties > * { grid-column: 1 !important; grid-row: auto !important; }
 }
+
+/* ---------- Mobile banners: shorter, flatter curve ---------- */
+@media (max-width: 800px) {
+  .banner { clip-path: ellipse(160% 100% at 50% 0%); }
+  .banner.short { min-height: 270px; padding: 100px var(--side) 36px; }
+  .banner.home { min-height: 170px; }
+  .banner h1 { font-size: 2rem; }
+  .banner .sub { font-size: 15px; }
+}
